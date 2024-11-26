@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+{% block content %}
+    <!-- Icons Section -->
+    <div class="icon-section">
+        <div class="icon">
+            <img src="{% static 'img/hairdresser_icon.png' %}" alt="Hairdresser Icon">
+            <p>Hairdresser</p>
+        </div>
+        <div class="icon">
+            <img src="{% static 'img/cosmetic_ico.png' %}" alt="Cosmetic Icon">
+            <p>Cosmetic</p>
+        </div>
+        <div class="icon">
+            <img src="{% static 'img/massage.png' %}" alt="Massage Icon">
+            <p>Massage</p>
+        </div>
+        <div class="icon">
+            <img src="{% static 'img/dog.png' %}" alt="Dog Grooming">
+            <p>Dog Grooming</p>
+        </div>
+    </div>
+
+
+    <!-- Red Div Section -->
+<!-- Top-Partner Div Section -->
+<div class="red-div">
+    {% for partner in partners %}
+        <div class="partner">
+            <img src="{% static 'img/test.webp' %}" alt="{{ partner.name }}">
+            <p><strong>{{ partner.name }}</strong></p>
+            <p>{{ partner.address }}</p>
+            <p>Telefon: {{ partner.phone }}</p>
+        </div>
+    {% endfor %}
+</div>
+<!-- Slider Section -->
+<div class="slider-container">
+    <div class="slider">
+        {% for partner in partners %}
+            <div class="partner-slide">
+                <img src="{% static 'img/partner_placeholder.png' %}" alt="{{ partner.name }}">
+                <p><strong>{{ partner.name }}</strong></p>
+                <p>{{ partner.address }}</p>
+                <p>Telefon: {{ partner.phone }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Navigation Arrows -->
+    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+</div>
+
+
+    <!-- Reviews Section -->
+    <section class="reviews">
+        <h2>What Our Users Say</h2>
+        <div class="review">"Great service!" - Anna</div>
+        <div class="review">"Booked my appointment in minutes." - Martin</div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog">
+        <h2>Latest from Our Blog</h2>
+        <p>Check out the latest trends in haircuts, grooming, and care!</p>
+    </section>
+
+    <script src="{% static 'js/script.js' %}"></script>
+
+{% endblock %}

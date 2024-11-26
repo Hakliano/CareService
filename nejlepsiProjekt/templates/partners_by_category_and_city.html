@@ -1,0 +1,119 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtered Partners</title>
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+</head>
+<body>
+    <!-- Hlavička -->
+    <header id="header-top" class="header-top">
+        <ul>
+            <li>
+                <div class="header-top-left">
+                    <ul>
+                        <li class="select-opt">
+                            <select name="language" id="language">
+                                <option value="default">EN</option>
+                                <option value="CZ">CZ</option>
+                            </select>
+                        </li>
+                        <li class="select-opt">
+                            <select name="currency" id="currency">
+                                <option value="usd">USD</option>
+                                <option value="czk">CZK</option>
+                            </select>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="head-responsive-right pull-right">
+                <div class="header-top-right">
+                    <ul>
+                        <li class="header-top-contact">+420 123 456 789</li>
+                        <li class="header-top-contact"><a href="#">Sign in</a></li>
+                        <li class="header-top-contact"><a href="#">Register</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </header>
+
+    <!-- Filtrovací formulář -->
+    <section id="filter-form" class="filter-form">
+        <div class="container">
+            <form method="get" action="{% url 'partners_by_category_and_city' %}">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="category">Kategorie:</label>
+                        <select name="category" id="category" class="form-control">
+                            <option value="">-- Vyberte kategorii --</option>
+                            <option value="Kadeřnictví">Kadeřnictví</option>
+                            <option value="Masáže">Masáže</option>
+                            <option value="Kosmetika">Kosmetika</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="city">Město:</label>
+                        <select name="city" id="city" class="form-control">
+                            <option value="">-- Vyberte město --</option>
+                            <option value="Praha">Praha</option>
+                            <option value="Brno">Brno</option>
+                            <option value="Ostrava">Ostrava</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary" style="margin-top: 25px;">Filtrovat</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Výpis partnerů -->
+    <section id="explore" class="explore">
+        <div class="container">
+            <div class="section-header">
+                <h2>Filtered Partners</h2>
+                <p>Partners filtered by category and city.</p>
+            </div>
+            <div class="explore-content">
+                <div class="row">
+                    {% for partner in partners %}
+                    <div class="col-md-4 col-sm-6">
+                        <div class="single-explore-item">
+                            <div class="single-explore-img">
+                                {% if partner.image %}
+                                <img src="{{ partner.image.url }}" alt="{{ partner.name }}">
+                                {% else %}
+                                <img src="{% static 'assets/images/explore/e1.jpg' %}" alt="default image">
+                                {% endif %}
+                            </div>
+                            <div class="single-explore-txt">
+                                <h2><a href="{% url 'partner_detail' partner.id %}">{{ partner.name }}</a></h2>
+                                <p>{{ partner.address }}</p>
+                                <p>{{ partner.city }}</p>
+                                <p><strong>Category:</strong> {{ partner.category.name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p>No partners found for the selected filters.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Patička -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 OstříhámTo. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

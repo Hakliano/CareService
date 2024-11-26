@@ -1,0 +1,376 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #333;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed; /* Fixní pozice, aby navbar zůstal na vrchu i při scrollování */
+  top: 0;
+  width: 100%; /* Roztažení přes celou šířku stránky */
+  z-index: 9999; /* Vysoký z-index, aby byl nad všemi ostatními prvky */
+}
+
+.navbar .logo a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+}
+
+.navbar ul li {
+  margin-left: 20px;
+}
+
+.navbar ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+.navbar ul li a:hover {
+  color: #ddd;
+}
+
+
+/* Main Content */
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 150px;
+  text-align: center;
+}
+
+.sidebar img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* Sidebar */
+.sidebar.left {
+  width: 20vw; /* 20% šířky celé stránky */
+  position: fixed; /* Fixní pozice, aby zůstal na levé straně při scrollování */
+  left: 0;
+  top: 60px; /* Začíná pod navigační lištou */
+  height: 150vh; /* Sidebar bude minimálně 150% výšky okna */
+  background-image: url("{% static 'img/bok1.webp' %}"); /* Přidání obrázku jako pozadí */
+  background-repeat: repeat-y; /* Obrázek se opakuje vertikálně */
+  background-size: cover; /* Obrázek pokryje šířku sidebaru */
+  background-position: center; /* Obrázek bude zarovnaný uprostřed */
+  z-index: 1000; /* Obrázek je nad ostatními prvky */
+}
+
+
+.sidebar.left img {
+    width: 100%; /* Obrázek vyplní celý prostor panelu */
+    height: auto; /* Automatické přizpůsobení výšky */
+    border-radius: 0; /* Bez zaoblených rohů */
+}
+
+
+/* Right Sidebar */
+.sidebar.right {
+  width: 20vw; /* 16% šířky celé stránky (viewport width - vw) */
+  position: fixed; /* Fixní pozice, aby zůstával na pravé straně při scrollování */
+  right: 0; /* Umístění napravo */
+  top: 60px; /* Začíná až pod navigační lištou */
+  height: 150vh; /* Nastavení výšky na 100% výšky okna */
+  background-color: transparent; /* Průhledné pozadí */
+  z-index: 1000; /* Zajištění, že bude vidět nad ostatními prvky */
+  background-repeat: repeat-y; /* Obrázek se bude opakovat vertikálně */
+
+}
+
+.sidebar.right img {
+  width: 100%; /* Obrázek vyplní celý prostor panelu */
+  height: auto; /* Automatické přizpůsobení výšky */
+  border-radius: 0; /* Bez zaoblených rohů */
+}
+
+/* Hero Section */
+.hero-section {
+  position: relative;
+  width: 100%;
+  max-width: 1200px; /* Omezí šířku na větších obrazovkách */
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.hero-title {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.hero-image {
+  max-width: 80%; /* Omezí velikost obrázku při zvětšení */
+  width: 100%; /* Obrázek bude responsivní */
+  height: auto;
+  border-radius: 10px;
+  display: block; /* Obrázek je blokový prvek, což umožňuje margin auto fungovat */
+  margin: 0 auto; /* Centrované horizontálně */
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  max-width: 90%;
+  text-align: center;
+}
+
+
+
+.btn-primary {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.icon-section {
+  display: flex;
+  justify-content: space-around; /* Zajistí rovnoměrné rozložení s mezerami mezi ikonami */
+  margin: 40px auto;
+  max-width: 90%; /* Nastavení maximální šířky, aby se vešly na obrazovku */
+  padding: 0 5%; /* Přidání vnitřního odsazení z obou stran */
+  overflow: hidden; /* Skryje ikony, které přesahují */
+}
+
+.icon {
+  text-align: center;
+  flex: 1; /* Flexibilní šířka, aby se přizpůsobily prostoru */
+  max-width: 200px; /* Nastavení maximální šířky pro jednotlivé ikony */
+}
+
+.icon img {
+  width: 100%; /* Obrázek bude plně vyplňovat rodičovský kontejner */
+  height: auto;
+}
+
+
+.icon img:hover {
+  transform: scale(1.15);
+}
+
+.icon p {
+  margin-top: 10px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+
+/* Reviews Section */
+.reviews {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.reviews h2 {
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+.review {
+  margin: 10px 0;
+  font-style: italic;
+}
+
+
+
+.red-div {
+  width: 90%;
+  margin: 20px auto;
+  height: auto;
+  background-color: rgb(93, 61, 211);
+  z-index: 2000;
+  position: relative;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: hidden; /* Skryje přebytečné partnery */
+  max-height: 500px; /* Výška pro 4 partnery, můžeš ji upravit podle potřeby */
+  transition: max-height 0.5s ease;
+}
+
+.red-div:hover {
+  max-height: 1000px; /* Zvětší výšku při najetí myší, aby se ukázali další partneři */
+}
+
+.partner {
+  width: 22%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  transition: opacity 0.3s ease;
+}
+
+.partner img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.partner p {
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+/* Partner Block */
+.partner {
+  width: 22%; /* Zajišťuje, že se vejdou 4 vedle sebe (s mezerami) */
+  background-color: white; /* Bílé pozadí pro každého partnera */
+  padding: 10px;
+  border-radius: 10px; /* Trochu zaoblené rohy */
+  text-align: center; /* Text bude centrovaný */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Trochu stínování pro efekt */
+}
+
+.partner img {
+  width: 100%; /* Obrázek se přizpůsobí šířce divu */
+  border-radius: 10px; /* Zaoblení rohů obrázku */
+  margin-bottom: 10px; /* Mezery pod obrázkem */
+}
+
+.partner p {
+  margin: 5px 0; /* Menší mezery mezi popisky */
+  font-size: 1em;
+}
+
+
+/* Blog Section */
+.blog {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.blog h2 {
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+
+.grid-container {
+margin-left: 26%;
+
+}
+
+/* Slider Container */
+.slider-container {
+  width: 90%;
+  margin: 20px auto;
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(120, 216, 64);
+  padding: 20px;
+  z-index: 2000;
+}
+
+/* Slider */
+.slider {
+  display: flex;
+  transition: transform 0.5s ease; /* Plynulý přechod */
+}
+
+/* Partner Slide */
+.partner-slide {
+  min-width: 25%; /* Každý partner zabírá 25% šířky (4 partneři vedle sebe) */
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
+}
+
+.partner-slide img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* Navigation Buttons */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  font-size: 18px;
+  border-radius: 50%;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+
+
+
+/* Media Queries pro různé velikosti obrazovek */
+@media (max-width: 768px) {
+  .icon-section {
+      flex-direction: column;
+      align-items: center;
+  }
+  .hero-content {
+      padding: 10px;
+      font-size: 0.9em;
+  }
+}
+
+@media (max-width: 480px) {
+  .icon img {
+      width: 80px;
+      height: 80px;
+  }
+  .hero-content h1 {
+      font-size: 1.5em;
+  }
+}

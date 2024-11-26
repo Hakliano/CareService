@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="cs">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Welcome to Our Hairdressing Directory{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <!-- Levý Sidebar -->
+  <div class="sidebar left">
+    <img src="{% static 'img/bok2.webp' %}" alt="Bok 1"><!-- Můžeš použít i "img/bok1.webp" -->
+    <img src="{% static 'img/bok2.webp' %}" alt="Bok 1"> <!-- Další opakovaný obrázek -->
+</div>
+
+
+
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="{% url 'index' %}">MyHairDirectory</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="{% url 'partner_list' %}">Partners</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero section -->
+    <section class="hero">
+        <img src="{% static 'img/hero_fight.webp' %}" alt="Hero Image" class="hero-image">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>{% block hero_title %}Welcome to Our Hairdressing Directory{% endblock %}</h1>
+            <p>Find the best salons and barbershops near you</p>
+            <a href="{% url 'partner_list' %}" class="btn btn-primary">Explore Partners</a>
+        </div>
+    </section>
+  
+    
+  <!-- Pravý Sidebar -->
+    <div class="sidebar right">
+        <img src="{% static 'img/bok2.webp' %}" alt="Bok 2">
+        <img src="{% static 'img/bok2.webp' %}" alt="Bok 2">
+    </div>
+
+    {% block content %}{% endblock %}
+
+    <footer>
+        <p>© 2024 Your Company</p>
+    </footer>
+  
+  
+    <script src="{% static 'js/script.js' %}"></script>
+
+
+
+</body>
+</html>

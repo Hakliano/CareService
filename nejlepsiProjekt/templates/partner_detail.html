@@ -1,0 +1,411 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <head>
+        <!-- meta data -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        
+        <!-- title of site -->
+        <title>{{ partner.name }}</title>
+
+        <!-- For favicon png -->
+		<link rel="shortcut icon" type="image/icon" href="{% static 'assets/logo/favicon.png' %}"/>
+       
+        <!--font-awesome.min.css-->
+        <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+
+        <!--linear icon css-->
+		<link rel="stylesheet" href="{% static 'assets/css/linearicons.css' %}">
+
+		<!--animate.css-->
+        <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+
+		<!--flaticon.css-->
+        <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
+
+		<!--slick.css-->
+        <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/slick-theme.css' %}">
+		
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+		
+		<!-- bootsnav -->
+		<link rel="stylesheet" href="{% static 'assets/css/bootsnav.css' %}">	
+        
+        <!--style.css-->
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        
+        <!--responsive.css-->
+        <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+        
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		
+        <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+	
+	<body>
+		<!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+		
+		<!--header-top start -->
+		<header id="header-top" class="header-top">
+			<ul>
+				<li>
+					<div class="header-top-left">
+						<ul>
+							<li class="select-opt">
+								<select name="language" id="language">
+									<option value="default">EN</option>
+									<option value="Bangla">BN</option>
+									<option value="Arabic">AB</option>
+								</select>
+							</li>
+							<li class="select-opt">
+								<select name="currency" id="currency">
+									<option value="usd">USD</option>
+									<option value="euro">Euro</option>
+									<option value="bdt">BDT</option>
+								</select>
+							</li>
+							<li class="select-opt">
+								<a href="#"><span class="lnr lnr-magnifier"></span></a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="head-responsive-right pull-right">
+					<div class="header-top-right">
+						<ul>
+							<li class="header-top-contact">
+								+1 222 777 6565
+							</li>
+							<li class="header-top-contact">
+								<a href="#">sign in</a>
+							</li>
+							<li class="header-top-contact">
+								<a href="#">register</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+					
+		</header><!--/.header-top-->
+		<!--header-top end -->
+
+		<!-- top-area Start -->
+		<section class="top-area">
+			<div class="header-area">
+				<!-- Start Navigation -->
+			    <nav class="navbar navbar-default bootsnav  navbar-sticky navbar-scrollspy"  data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+
+			        <div class="container">
+
+			            <!-- Start Header Navigation -->
+			            <div class="navbar-header">
+			                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+			                    <i class="fa fa-bars"></i>
+			                </button>
+			                <a class="navbar-brand" href="index.html"><span>O</span>stříhám<span>T</span>o</a>
+
+			            </div><!--/.navbar-header-->
+			            <!-- End Header Navigation -->
+
+			            <!-- Collect the nav links, forms, and other content for toggling -->
+			            <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+			                <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+			                    <li class=" scroll active"><a href="#home">home</a></li>
+			                    <li class="scroll"><a href="#works">how it works</a></li>
+			                    <li class="scroll"><a href="#explore">explore</a></li>
+			                    <li class="scroll"><a href="#reviews">review</a></li>
+			                    <li class="scroll"><a href="#blog">blog</a></li>
+			                    <li class="scroll"><a href="#contact">contact</a></li>
+			                </ul><!--/.nav -->
+			            </div><!-- /.navbar-collapse -->
+			        </div><!--/.container-->
+			    </nav><!--/nav-->
+			    <!-- End Navigation -->
+			</div><!--/.header-area-->
+		    <div class="clearfix"></div>
+
+		</section><!-- /.top-area-->
+		<!-- top-area End -->
+<body>
+    <div class="card">
+        <div class="card-img-top">
+            {% if partner.image %}
+                <img src="{{ partner.image.url }}" alt="{{ partner.name }}" class="responsive-image">
+            {% else %}
+                <img src="{% static 'assets/images/explore/e1.jpg' %}" alt="default image" class="responsive-image">
+            {% endif %}
+        </div>
+		
+        <div class="card-body">
+            <!-- Hlavní informace -->
+            <div class="main-info">
+                <h1>{{ partner.name }}</h1>
+                <p><strong>Kategorie:</strong> {{ partner.category }}</p>
+                <p><strong>Adresa:</strong> {{ partner.address }}</p>
+                <p><strong>Telefon:</strong> {{ partner.phone }}</p>
+                <p><strong>Detailní obsah:</strong></p>
+                <div style="padding-left: 35px; padding-right: 35px; margin-left: 35px; margin-right: 35px;">
+                    {% if partner.content %}
+                        {{ partner.content.html_content|safe }}
+                    {% else %}
+                        <p>Detailní obsah není k dispozici.</p>
+                    {% endif %}
+                </div>            </div>
+    
+            <!-- Nabízené služby -->
+            <div class="services">
+                <h2 style="padding: 5px 5px 15px 5px; margin: 5px 5px 15px 5px;">Nabízené služby a vybavení</h2>
+                <div class="icons" >
+					{% for partner_feature  in partner.features.all %}
+						<div class="service-item">
+							<span style = "text-align:center; font-size: 20px;"><i class="fa {{partner_feature.feature.icon|safe}}"></i> 
+								<br /><i style = "font-size: 10px;">{{ partner_feature.feature.name }}</i></span>
+						</div>
+					{% endfor %}
+                </div>
+            </div>
+    
+            <!-- Tabulky vedle sebe: Ceník a Otevírací doba -->
+            <div class="info-tables">
+                <div class="price-list">
+                    <h2>Ceník</h2>
+                    <table>
+                        <tr><th>Služba</th><th>Cena</th></tr>
+                        {% for price_item in partner.price_list.all %}
+                            <tr>
+                                <td>{{ price_item.service_name }}</td>
+                                <td>{{ price_item.price }} Kč</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+                
+                <div class="opening-hours">
+                    <h2>Otevírací doba</h2>
+                    <table>
+                        {% for hours in partner.opening_hours.all %}
+                            <tr>
+                                <td>{{ hours.get_day_display }}</td>
+                                <td>{{ hours.open_time }} – {{ hours.close_time }}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+    
+            <!-- Fotogalerie -->
+            <div class="gallery">
+                <h2>Fotogalerie</h2>
+                <div class="gallery-slider">
+                    {% for photo in partner.gallery.all %}
+                        <div class="slide"><img src="{{ photo.image.url }}" alt="photo"></div>
+                    {% endfor %}
+                </div>
+            </div>
+    
+            <a href="{% url 'reality' %}" class="back">Zpět na hlavní stránku</a>
+        </div>
+    </div>
+    
+    <!--reviews start -->
+		<section id="reviews" class="reviews">
+			<div class="section-header">
+				<h2>clients reviews</h2>
+				<p>What our client say about us</p>
+			</div><!--/.section-header-->
+
+
+
+		<div class="slider">
+			<div class="slide-track">
+				<div class="slide">
+					<div style="width:200px; height:100%;">
+						<img src="{% static 'assets/images/welcome-hero/hero_fight.webp' %}" alt="clients">
+						<p>RATING</p>
+					</div>
+				</div>
+			<div class="slide">
+					<div class="single-testimonial-box">
+						<div class="testimonial-description">
+							<div class="testimonial-info">
+								<div class="testimonial-img">
+									<img src="{% static 'assets/images/clients/c1.png' %}" alt="clients">
+								</div><!--/.testimonial-img-->
+								<div class="testimonial-person">
+									<h2>Tom Leakar</h2>
+									<h4>london, UK</h4>
+									<div class="testimonial-person-star">
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+									</div>
+								</div><!--/.testimonial-person-->
+							</div><!--/.testimonial-info-->
+							<div class="testimonial-comment">
+								<p>
+									Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
+								</p>
+							</div><!--/.testimonial-comment-->
+						</div><!--/.testimonial-description-->
+					</div><!--/.single-testimonial-box-->
+				</div>
+				<div class="slide">
+					<div class="single-testimonial-box">
+						<div class="testimonial-description">
+							<div class="testimonial-info">
+								<div class="testimonial-img">
+									<img src="{% static 'assets/images/clients/c2.png' %}" alt="clients">
+								</div><!--/.testimonial-img-->
+								<div class="testimonial-person">
+									<h2>monirul islam</h2>
+									<h4>london, UK</h4>
+									<div class="testimonial-person-star">
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+									</div>
+								</div><!--/.testimonial-person-->
+							</div><!--/.testimonial-info-->
+							<div class="testimonial-comment">
+								<p>
+									Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
+								</p>
+							</div><!--/.testimonial-comment-->
+						</div><!--/.testimonial-description-->
+					</div><!--/.single-testimonial-box-->
+				</div>
+				<div class="slide">
+					<div class="single-testimonial-box">
+						<div class="testimonial-description">
+							<div class="testimonial-info">
+								<div class="testimonial-img">
+									<img src="{% static 'assets/images/clients/c3.png' %}" alt="clients">
+								</div><!--/.testimonial-img-->
+								<div class="testimonial-person">
+									<h2>Shohrab Hossain</h2>
+									<h4>london, UK</h4>
+									<div class="testimonial-person-star">
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+									</div>
+								</div><!--/.testimonial-person-->
+							</div><!--/.testimonial-info-->
+							<div class="testimonial-comment">
+								<p>
+									Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
+								</p>
+							</div><!--/.testimonial-comment-->
+						</div><!--/.testimonial-description-->
+					</div><!--/.single-testimonial-box-->
+				</div>
+				<div class="slide">
+					<div class="single-testimonial-box">
+						<div class="testimonial-description">
+							<div class="testimonial-info">
+								<div class="testimonial-img">
+									<img src="{% static 'assets/images/clients/c4.png' %}" alt="clients">
+								</div><!--/.testimonial-img-->
+								<div class="testimonial-person">
+									<h2>Tom Leakar</h2>
+									<h4>london, UK</h4>
+									<div class="testimonial-person-star">
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+									</div>
+								</div><!--/.testimonial-person-->
+							</div><!--/.testimonial-info-->
+							<div class="testimonial-comment">
+								<p>
+									Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
+								</p>
+							</div><!--/.testimonial-comment-->
+						</div><!--/.testimonial-description-->
+					</div><!--/.single-testimonial-box-->	
+				</div>
+				<div class="slide">
+					<div class="single-testimonial-box">
+						<div class="testimonial-description">
+							<div class="testimonial-info">
+								<div class="testimonial-img">
+									<img src="{% static 'assets/images/clients/c3.png' %}" alt="clients">
+								</div><!--/.testimonial-img-->
+								<div class="testimonial-person">
+									<h2>Shohrab Hossain</h2>
+									<h4>london, UK</h4>
+									<div class="testimonial-person-star">
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+									</div>
+								</div><!--/.testimonial-person-->
+							</div><!--/.testimonial-info-->
+							<div class="testimonial-comment">
+								<p>
+									Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
+								</p>
+							</div><!--/.testimonial-comment-->
+						</div><!--/.testimonial-description-->
+					</div><!--/.single-testimonial-box-->
+				</div>
+				<div class="slide">
+					<div class="single-testimonial-box">
+						<div class="testimonial-description">
+							<div class="testimonial-info">
+								<div class="testimonial-img">
+									<img src="{% static 'assets/images/clients/c4.png' %}" alt="clients">
+								</div><!--/.testimonial-img-->
+								<div class="testimonial-person">
+									<h2>Tom Leakar</h2>
+									<h4>london, UK</h4>
+									<div class="testimonial-person-star">
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+										<i class="fa fa-star"></i>
+									</div>
+								</div><!--/.testimonial-person-->
+							</div><!--/.testimonial-info-->
+							<div class="testimonial-comment">
+								<p>
+									Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis eaque.
+								</p>
+							</div><!--/.testimonial-comment-->
+						</div><!--/.testimonial-description-->
+					</div><!--/.single-testimonial-box-->	
+				</div>
+			</div>
+		</div>
+
+</body>
+</html>

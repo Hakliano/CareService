@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="cs">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Welcome to Our Hairdressing Directory{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles2.css' %}">
+</head>
+<body>
+    
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="{% url 'index' %}">MyHairDirectory</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="{% url 'partner_list' %}">Partners</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="slider">
+        <div class="slide-track">
+
+
+
+        <div class="slide">
+            <img src="{% static 'img/hairdresser_icon.png' %}" height="200" width="200" alt="Hairdresser Icon">
+            <p>Hairdresser</p>
+        </div>
+        <div class="slide">
+            <img src="{% static 'img/cosmetic_ico.png' %}" height="200" width="200" alt="Cosmetic Icon">
+            <p>Cosmetic</p>
+        </div>
+        <div class="slide">
+            <img src="{% static 'img/massage.png' %}" height="200" width="200" alt="Massage Icon">
+            <p>Massage</p>
+        </div>
+        <div class="slide">
+            <img src="{% static 'img/dog.png' %}" height="200" width="200" alt="Dog Grooming">
+            <p>Dog Grooming</p>
+        </div>
+            
+        </div>
+    </div>
+
+
+
+    
+
+<footer>
+    <p>© 2024 Your Company</p>
+</footer>
+
+
+<script src="{% static 'js/script.js' %}"></script>
+
+
+
+</body>
+</html>

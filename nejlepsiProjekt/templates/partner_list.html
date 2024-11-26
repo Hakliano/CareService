@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} Partners List {% endblock %} 
+
+{% block content %}
+<body>
+    <main class="container">
+        <h1>Partners List</h1>
+        <div class="grid-container">
+            {% for partner in partners %}
+                <div class="partner-block">
+                    <h2>{{ partner.name }}</h2>
+                    <p><strong>Adresa:</strong> {{ partner.address }}</p>
+                    <p><strong>Telefon:</strong> {{ partner.phone }}</p>
+                    <p><strong>Email:</strong> {{ partner.email }}</p>
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        {{ review_form.as_p }}
+                        <button type="submit" class="btn btn-primary">Rate</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+{% endblock content %}

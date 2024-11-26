@@ -1,0 +1,31 @@
+
+{% extends "base.html" %}
+{% block title %} Přidej Partnera {% endblock  %}
+{% block content %}
+
+
+    <main class="container">
+        <section>
+            <h1>Přidej Partnera</h1>
+            <div class="grid">
+                <div>
+                    <p>Form:</p>
+                    <form method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="btn btn-primary mt-5" type="submit">Submit</button>
+                    </form>
+                </div>
+                <div>
+                    <p>img</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Děkuji</h2>
+        </section>
+    </main>
+
+ 
+
+{% endblock  %}

@@ -148,73 +148,70 @@
 
 
 
-		<!-- Section HOME start -->
-
-		<section id="home" class="welcome-hero">
-			<div class="container">
-				<div class="welcome-hero-txt">
-					<h2>Nejlepší místo pro hledání a objevování služeb, <br> toho všeho, co potřebujete.</h2>
-					<p>
-						Najděte kadeřnictví, maséry, kosmetičky, barbershopy a salóny péče o domácí mazlíčky snadno a rychle na jednom místě.
-					</p>
-				</div>
-				<div class="welcome-hero-serch-box">
-					{% comment %} <form action="{% url 'filter_partners' %}" method="get" class="welcome-hero-form"> {% endcomment %}
-						<!-- Kategorie -->
-						<div class="single-welcome-hero-form">
-							<h3>Co hledáte vy smejdi?</h3>
-							<select name="category">
-								<option value="">Vyberte kategorii</option>
-					
-{% comment %} 					{% for cat in categories %} 
-								<option value="{{ cat.id }}" {% if selected_category == cat.id|string %}selected{% endif %}>
-									{{ cat.name }}
-								</option>
-								{% endfor %}    {% endcomment %}
-
-							</select>
-						</div>
-						<!-- Kraje -->
-						<div class="single-welcome-hero-form">
-							<h3>Kraj</h3>
-							<select name="region" id="region-select" onchange="updateCities()">
-								<option value="">Vyberte kraj</option>
-{% comment %}							
-								{% for region in regions %}
-								<option value="{{ region.id }}" {% if selected_region == region.id|string %}selected{% endif %}>
-									{{ region.name }}
-								</option>
-								{% endfor %} {% endcomment %}
-
-							</select>
-						</div>
-						<!-- Města -->
-						<div class="single-welcome-hero-form">
-							<h3>Město</h3>
-							<select name="city" id="city-select">
-								<option value="">Vyberte město</option>
-{% comment %} 					{% for city in cities %}
-								<option value="{{ city.id }}" {% if selected_city == city.id|string %}selected{% endif %}>
-									{{ city.name }}
-								</option>
-								{% endfor %} {% endcomment %}
-
-
-							</select>
-						</div>
-						<!-- Tlačítko -->
-						<div class="welcome-hero-serch">
-							<button type="submit" class="welcome-hero-btn">
-								search <i data-feather="search"></i>
-							</button>
-						</div>
-					</form>
-				</div>
+	<!-- Section HOME start -->
+	<section id="home" class="welcome-hero">
+		<div class="container">
+			<div class="welcome-hero-txt">
+				<h2>Nejlepší místo pro hledání a objevování služeb, <br> toho všeho, co potřebujete.</h2>
+				<p>
+					Najděte kadeřnictví, maséry, kosmetičky, barbershopy a salóny péče o domácí mazlíčky snadno a rychle na jednom místě.
+				</p>
 			</div>
-		</section>
-
-		
-		<!-- Section HOME End -->
+			<form action="{% url 'reality' %}" method="get" class="welcome-hero-form">
+				<!-- Kategorie -->
+				<div class="single-welcome-hero-form">
+					<label for="category-select" class="form-label">Kategorie</label>
+					<select name="category" id="category-select" onchange="updateSummary()">
+						<option value="">Vyberte kategorii</option>
+						{% for cat in categories %}
+						<option value="{{ cat.id }}" {% if selected_category == cat.id %}selected{% endif %}>
+							{{ cat.name }}
+						</option>
+						{% endfor %}
+					</select>
+					<p class="selected-info">Vybráno: <span id="selected-category">Nevybráno</span></p>
+				</div>
+			
+				<!-- Kraje -->
+				<div class="single-welcome-hero-form">
+					<label for="region-select" class="form-label">Kraj</label>
+					<select name="region" id="region-select" onchange="updateCities(); updateSummary();">
+						<option value="">Vyberte kraj</option>
+						{% for region in regions %}
+						<option value="{{ region.id }}" {% if selected_region == region.id %}selected{% endif %}>
+							{{ region.name }}
+						</option>
+						{% endfor %}
+					</select>
+					<p class="selected-info">Vybráno: <span id="selected-region">Nevybráno</span></p>
+				</div>
+			
+				<!-- Město -->
+				<div class="single-welcome-hero-form">
+					<label for="city-select" class="form-label">Město</label>
+					<select name="city" id="city-select" onchange="updateSummary()">
+						<option value="">Vyberte město</option>
+						{% for city in cities %}
+						<option  value="{{ city.id }}" {% if selected_city == city.id %}selected{% endif %}>
+							<span style="color:red; background-color:white;">{{ city.name }}</span>
+						</option>
+						{% endfor %}
+					</select>
+					<p class="selected-info">Vybráno: <span id="selected-city">Nevybráno</span></p>
+				</div>
+			
+				<!-- Tlačítko -->
+				<div class="search-container">
+					<button type="submit" class="welcome-hero-btn">
+						search <i data-feather="search"></i>
+					</button>
+				</div>
+			</form>
+			
+			
+		</div>
+	</section>
+	
 
 		
 
@@ -817,28 +814,57 @@
 		<script src="{% static 'assets/js/slick.min.js' %}"></script>
 		<script src="{% static 'assets/js/custom.js' %}"></script>
         
+		
+		
+		<!-- data pro výběr mest a kategorii -->
+<script>
+    function updateCities() {
+        const regionId = document.getElementById('region-select').value;
+        const citySelect = document.getElementById('city-select');
+
+        // Vyčistění seznamu měst
+        citySelect.innerHTML = '<option value="">Vyberte město</option>';
+
+        // Pokud je region vybrán, načti odpovídající města
+        if (regionId) {
+            fetch(`/get-cities-for-region/?region_id=${regionId}`)
+                .then(response => response.json())
+                .then(data => {
+                    data.cities.forEach(city => {
+                        const option = document.createElement('option');
+                        option.value = city.id;
+                        option.textContent = city.name;
+                        citySelect.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Chyba při načítání měst:', error));
+        }
+
+        // Aktualizuj přehled při změně kraje
+        updateSummary();
+    }
+
+    function updateSummary() {
+        console.log("Spuštění funkce updateSummary"); // Kontrola, zda se funkce spustí
+
+        // Načtení aktuálně vybraných hodnot
+        const category = document.getElementById('category-select');
+        const region = document.getElementById('region-select');
+        const city = document.getElementById('city-select');
+
+        console.log("Kategorie:", category.options[category.selectedIndex]?.text || "Nevybráno");
+        console.log("Kraj:", region.options[region.selectedIndex]?.text || "Nevybráno");
+        console.log("Město:", city.options[city.selectedIndex]?.text || "Nevybráno");
+
+        // Aktualizace textu pro zobrazení
+        document.getElementById('selected-category').textContent = category.options[category.selectedIndex]?.text || "Nevybráno";
+        document.getElementById('selected-region').textContent = region.options[region.selectedIndex]?.text || "Nevybráno";
+        document.getElementById('selected-city').textContent = city.options[city.selectedIndex]?.text || "Nevybráno";
+    }
+</script>
+
+		
     </body>
-	<script>
-		function updateCities() {
-			const regionId = document.getElementById('region-select').value;
-			const citySelect = document.getElementById('city-select');
 	
-			// Vymazat stávající možnosti
-			citySelect.innerHTML = '<option value="">Vyberte město</option>';
-	
-			if (regionId) {
-				fetch(`/get_cities_for_region?region_id=${regionId}`)
-					.then(response => response.json())
-					.then(data => {
-						data.forEach(city => {
-							const option = document.createElement('option');
-							option.value = city.id;
-							option.textContent = city.name;
-							citySelect.appendChild(option);
-						});
-					});
-			}
-		}
-	</script>
 	
 </html>

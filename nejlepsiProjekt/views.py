@@ -61,12 +61,13 @@ def register(request):
 def cards(request):
     return render(request, 'cards.html')
 
-
 def get_cities_for_region(request):
     region_id = request.GET.get('region_id')
-    cities = City.objects.filter(region_id=region_id).values('id', 'name')
-    return JsonResponse(list(cities), safe=False)
-
+    if region_id:
+        cities = City.objects.filter(region_id=region_id).values('id', 'name')
+    else:
+        cities = []
+    return JsonResponse({'cities': list(cities)})
 
 def filter_partners(request):
     categories = Category.objects.all()
@@ -78,6 +79,14 @@ def filter_partners(request):
 
     partners = Partner.objects.all()
 
+
+ # Debugovací výpisy
+ 
+    print(f"GET data: {request.GET}")
+    print(f"Selected category: {selected_category}")
+    print(f"Selected region: {selected_region}")
+    print(f"Selected city: {selected_city}")
+
     if selected_category:
         try:
             selected_category_obj = Category.objects.get(id=selected_category)
@@ -88,6 +97,8 @@ def filter_partners(request):
     if selected_region:
         cities_in_region = City.objects.filter(region_id=selected_region)
         partners = partners.filter(city__in=cities_in_region)
+    else:
+        cities_in_region = City.objects.none()
 
     if selected_city:
         partners = partners.filter(city__id=selected_city)
@@ -96,11 +107,11 @@ def filter_partners(request):
         'partners': partners,
         'categories': categories,
         'regions': regions,
+        'cities': cities_in_region,  # Dynamicky načtená města
         'selected_category': selected_category,
         'selected_region': selected_region,
         'selected_city': selected_city,
     })
-
 
 def partner_detail(request, partner_id):
     """Detail konkrétního partnera."""

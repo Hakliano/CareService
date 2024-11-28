@@ -278,27 +278,68 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
 }
 
 .welcome-hero-serch-box{margin-top: 78px;display: flex;}
-.welcome-hero-form {
-   
+.welcome-hero-form 
+{
     display: flex;
-    background: #fff;
-    height: 70px;
-    border-radius: 3px;
-    width: 85%;
-    justify-content: space-between; /* Rovnoměrně rozdělí místo mezi položkami */
-    gap: 20px; /* Mezery mezi prvky */
+    gap: 15px; /* Menší mezery mezi poli */
+    justify-content: center; /* Zarovnání na střed */
+    align-items: flex-start; /* Zarovnání nahoře */
+    flex-wrap: nowrap; /* Zabrání zalomení */
+    gap: 10px; /* Mezera mezi položkami */
 
 }
-.single-welcome-hero-form {
-    position: relative;
+
+/* Zobrazení vybraných hodnot */
+.selected-info {
+        display: flex;
+        align-items: center; /* Text bude vertikálně zarovnán */
+    }
+
+/* Bílé pozadí tlačítka search */
+.search-container {
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
-    flex-direction: row;
     align-items: center;
-    width: 80%;
-    padding: 0 20px;
-    border: none; /* Bez okraje */
+    justify-content: center;
+    height: 60px; 
+    width: 150px; 
 
 }
+
+/* Kontejner pro každé pole */
+.single-welcome-hero-form {
+    background-color: red; /* TESTOVACÍ */
+    display: flex;
+    flex-direction: column; /* Popisek a select na sobě */
+    align-items: center; /* Zarovnání na střed */
+    width: 150px; /* Stejná šířka pro všechny položky */
+    text-align: center;
+    position: relative; /* Pro správné umístění zobrazené hodnoty */
+}
+
+
+/* Select boxy */
+.single-welcome-hero-form select {
+    width: 100%; /* Šířka odpovídá rodiči */
+    padding: 8px; /* Zmenšíme vnitřní odsazení */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* Popisky u polí */
+.form-label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+
 .single-welcome-hero-form:first-child{border-right: 1px solid #edeff1;}
 .single-welcome-hero-form input {
     
@@ -325,16 +366,21 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     right: 30px;
     color: #252d32;
 }
+/* Tlačítko search */
 .welcome-hero-btn {
-    background-color: #f04e30; /* Barva tlačítka */
-    color: white; /* Barva textu */
-    border: none; /* Bez okraje */
-    padding: 10px 20px; /* Vnitřní odsazení */
-    border-radius: 5px; /* Zaoblené rohy */
-    font-size: 16px; /* Velikost písma */
-    cursor: pointer; /* Ukazatel při najetí myší */
+    background-color: #f56a79;
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
 }
-.welcome-hero-btn:hover{/*background: #fd4043;*/background: #f43032;}
+
+
+.welcome-hero-btn:hover{/*background: #fd4043;*/background: #d94f5f;}
 
 .welcome-hero-btn svg {
     width:  24px;
@@ -349,6 +395,14 @@ nav.navbar.bootsnav .navbar-toggle i{color: #ff545a;}
     border-radius: 5px; /* Zaoblené rohy */
     font-size: 16px; /* Velikost písma */
     margin-bottom: 10px; /* Mezery mezi jednotlivými prvky */
+}
+
+.form_topics{
+    font-size: 14px !important; /* Velikost písma */
+    background-color: #95cef0 !important; /* Barva tlačítka */
+    color: rgb(32, 168, 78); /* Barva textu */
+    font-weight: bold !important;
+
 }
 /*-------------------------------------
         5. List-topuics
